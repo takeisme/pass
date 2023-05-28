@@ -38,6 +38,8 @@
       var resultDiv = document.getElementById("result");
       var convertedNumber = convertNumber(numberInput);
       resultDiv.textContent = "入力した数字: " + convertedNumber;
+      document.getElementById("numberForm").style.display = "none";
+      document.getElementById("resetButton").style.display = "inline-block";
     }
 
     function convertNumber(number) {
@@ -58,16 +60,27 @@
 
       return convertedNumber;
     }
+
+    function resetForm() {
+      document.getElementById("numberForm").style.display = "block";
+      document.getElementById("resetButton").style.display = "none";
+      document.getElementById("result").textContent = "";
+      document.getElementById("numberInput").value = "";
+    }
   </script>
 </head>
 <body>
-  <form onsubmit="displayNumber()">
-    <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
-    <br>
-    <input type="tel" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
-    <button type="submit">送信</button>
-  </form>
+  <div id="numberForm">
+    <form onsubmit="displayNumber()">
+      <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+      <br>
+      <input type="tel" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+      <button type="submit">送信</button>
+    </form>
+  </div>
 
   <div id="result"></div>
+
+  <button id="resetButton" style="display: none;" onclick="resetForm()">Reset</button>
 </body>
 </html>
