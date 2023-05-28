@@ -2,9 +2,22 @@
 <html>
 <head>
   <title>4桁数字の入力</title>
+  <style>
+    /* スタイルを追加 */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
   <script>
-    function displayNumber() {
-      event.preventDefault(); // フォームのデフォルトの送信を防止する
+    function displayNumber(event) {
+      event.preventDefault();
       var numberInput = document.getElementById("numberInput").value;
       var resultDiv = document.getElementById("result");
       var convertedNumber = convertNumber(numberInput);
@@ -32,9 +45,11 @@
   </script>
 </head>
 <body>
-  <form onsubmit="displayNumber()">
+  <form onsubmit="displayNumber(event)">
     <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+    <br>
     <input type="number" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+    <br>
     <button type="submit">送信</button>
   </form>
 
