@@ -19,27 +19,44 @@
       margin-top: 20px;
       font-family: "Arial", sans-serif;
       font-weight: bold;
-      font-size: 24px; /* 大きさを調整する値 */
+      font-size: 24px;
     }
 
-    @media (max-width: 428px) {  /* iPhone 14 Proの縦画面の幅に合わせて調整 */
-      form {
-        max-width: 80%;
-      }
+    @media only screen and (max-width: 414px) {  /* iPhoneの縦画面に合わせて調整 */
       #result {
-        font-size: 15px; /* iPhoneのサイズに合わせたフォントサイズ */
+        font-size: 15px;
       }
+    }
+
+    #buttonContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 24px;
     }
   </style>
   <script>
     function displayNumber() {
-      event.preventDefault(); // フォームのデフォルトの送信を防止する
+      event.preventDefault();
       var numberInput = document.getElementById("numberInput").value;
-      var resultDiv = document.getElementById("result");
-      var convertedNumber = convertNumber(numberInput);
-      resultDiv.textContent = "入力した数字: " + convertedNumber;
-      document.getElementById("numberForm").style.display = "none";
-      document.getElementById("resetButton").style.display = "inline-block";
+      var isValid = validateNumber(numberInput);
+      
+      if (isValid) {
+        var resultDiv = document.getElementById("result");
+        var convertedNumber = convertNumber(numberInput);
+        resultDiv.textContent = "入力した数字: " + convertedNumber;
+        document.getElementById("numberForm").style.display = "none";
+        document.getElementById("buttonContainer").style.display = "block";
+      } else {
+        alert("1から6の間の4桁数字を入力してください。");
+      }
+    }
+
+    function validateNumber(number) {
+      var pattern = /^\d{4}$/;
+      var rangePattern = /^[1-6]+$/;
+      
+      return pattern.test(number) && rangePattern.test(number);
     }
 
     function convertNumber(number) {
@@ -63,7 +80,7 @@
 
     function resetForm() {
       document.getElementById("numberForm").style.display = "block";
-      document.getElementById("resetButton").style.display = "none";
+      document.getElementById("buttonContainer").style.display = "none";
       document.getElementById("result").textContent = "";
       document.getElementById("numberInput").value = "";
     }
@@ -79,8 +96,10 @@
     </form>
   </div>
 
-  <div id="result"></div>
+  <div id="result" style="display: none;"></div>
 
-  <button id="resetButton" style="display: none;" onclick="resetForm()">Reset</button>
+  <div id="buttonContainer" style="display: none;">
+    <button id="resetButton" onclick="resetForm()">Reset</button>
+  </div>
 </body>
 </html>
