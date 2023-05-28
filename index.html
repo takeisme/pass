@@ -2,62 +2,13 @@
 <html>
 <head>
   <title>4桁数字の入力</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: "Arial", sans-serif;
-    }
-
-    form {
-      text-align: center;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-family: "Arial", sans-serif;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-    @media only screen and (max-width: 414px) {  /* iPhoneの縦画面に合わせて調整 */
-      #result {
-        font-size: 15px;
-      }
-    }
-
-    #buttonContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 24px;
-    }
-  </style>
   <script>
     function displayNumber() {
-      event.preventDefault();
+      event.preventDefault(); // フォームのデフォルトの送信を防止する
       var numberInput = document.getElementById("numberInput").value;
-      var isValid = validateNumber(numberInput);
-      
-      if (isValid) {
-        var resultDiv = document.getElementById("result");
-        var convertedNumber = convertNumber(numberInput);
-        resultDiv.textContent = "入力した数字: " + convertedNumber;
-        document.getElementById("numberForm").style.display = "none";
-        document.getElementById("result").style.display = "block";
-        document.getElementById("buttonContainer").style.display = "block";
-      } else {
-        alert("1から6の間の4桁数字を入力してください。");
-      }
-    }
-
-    function validateNumber(number) {
-      var pattern = /^\d{4}$/;
-      var rangePattern = /^[1-6]+$/;
-      
-      return pattern.test(number) && rangePattern.test(number);
+      var resultDiv = document.getElementById("result");
+      var convertedNumber = convertNumber(numberInput);
+      resultDiv.textContent = "入力した数字: " + convertedNumber;
     }
 
     function convertNumber(number) {
@@ -78,10 +29,15 @@
 
       return convertedNumber;
     }
+  </script>
+</head>
+<body>
+  <form onsubmit="displayNumber()">
+    <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+    <input type="number" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+    <button type="submit">送信</button>
+  </form>
 
-    function resetForm() {
-      document.getElementById("numberForm").style.display = "block";
-      document.getElementById("result").style.display = "none";
-      document.getElementById("buttonContainer").style.display = "none";
-      document.getElementById("result").textContent = "";
-      document.getElementById⬤
+  <div id="result"></div>
+</body>
+</html>
