@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>4桁数字の入力</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Arial", sans-serif;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-family: "Arial", sans-serif;
+      font-weight: bold;
+      font-size: 24px; /* 大きさを調整する値 */
+    }
+
+    @media (max-width: 428px) {  /* iPhone 14 Proの縦画面の幅に合わせて調整 */
+      form {
+        max-width: 80%;
+      }
+    }
+  </style>
+  <script>
+    function displayNumber() {
+      event.preventDefault(); // フォームのデフォルトの送信を防止する
+      var numberInput = document.getElementById("numberInput").value;
+      var resultDiv = document.getElementById("result");
+      var convertedNumber = convertNumber(numberInput);
+      resultDiv.textContent = "入力した数字: " + convertedNumber;
+    }
+
+    function convertNumber(number) {
+      var mapping = {
+        "1": "6",
+        "2": "1",
+        "3": "5",
+        "4": "2",
+        "5": "6",
+        "6": "2"
+      };
+
+      var convertedNumber = "";
+      for (var i = 0; i < number.length; i++) {
+        var digit = number.charAt(i);
+        convertedNumber += mapping[digit];
+      }
+
+      return convertedNumber;
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="displayNumber()">
+    <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+    <br>
+    <input type="tel" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+    <button type="submit">送信</button>
+  </form>
+
+  <div id="result"></div>
+</body>
+</html>
