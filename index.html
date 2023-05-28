@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Enter the numbers</title>
+  <title>Enter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -55,10 +55,6 @@
       text-align: center;
       margin-top: 10px;
     }
-
-    .hidden {
-      display: none;
-    }
   </style>
   <script>
     function displayNumber(event) {
@@ -66,15 +62,7 @@
       var numberInput = document.getElementById("numberInput").value;
       var resultDiv = document.getElementById("result");
       var convertedNumber = convertNumber(numberInput);
-      resultDiv.textContent = convertedNumber;
-      document.getElementById("formSection").classList.add("hidden");
-      document.getElementById("resultSection").classList.remove("hidden");
-    }
-
-    function resetForm() {
-      document.getElementById("formSection").classList.remove("hidden");
-      document.getElementById("resultSection").classList.add("hidden");
-      document.getElementById("numberInput").value = "";
+      resultDiv.textContent = "入力した数字: " + convertedNumber;
     }
 
     function convertNumber(number) {
@@ -93,16 +81,15 @@
         convertedNumber += mapping[digit];
       }
 
-      return "入力した数字: " + convertedNumber;
+      return convertedNumber;
     }
   </script>
 </head>
 <body>
   <div class="container">
-    <h1>Enter the numbers</h1>
-    <section id="formSection">
-      <form onsubmit="displayNumber(event)">
-        <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+    <h1>Enter</h1>
+    <form onsubmit="displayNumber(event)">
+      <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
       <br>
       <input type="tel" id="numberInput" pattern="[0-9]{4}" inputmode="numeric" required>
       <br>
