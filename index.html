@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>4桁数字の入力</title>
+  <title>2nd Password Calculator</title>
   <style>
-    /* スタイルを追加 */
     body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333333;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 100%;
+    }
+
     #result {
       font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
     }
   </style>
   <script>
@@ -45,14 +84,16 @@
   </script>
 </head>
 <body>
-  <form onsubmit="displayNumber(event)">
-    <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
-    <br>
-    <input type="number" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
-    <br>
-    <button type="submit">送信</button>
-  </form>
-
-  <div id="result"></div>
+  <div class="container">
+    <h1>2nd Password Calculator</h1>
+    <form onsubmit="displayNumber(event)">
+      <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
+      <br>
+      <input type="number" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+      <br>
+      <button type="submit">送信</button>
+    </form>
+    <div id="result"></div>
+  </div>
 </body>
 </html>
