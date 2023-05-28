@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>2nd Password Calculator</title>
+  <title>ChatGPT風デザイン</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #f1f1f1;
@@ -17,7 +18,8 @@
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      width: 400px;
+      width: 80%;
+      max-width: 400px;
     }
 
     h1 {
@@ -85,11 +87,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>2nd Password Calculator</h1>
+    <h1>ChatGPT風デザイン</h1>
     <form onsubmit="displayNumber(event)">
       <label for="numberInput">1から6の間の4桁数字を入力してください:</label>
       <br>
-      <input type="number" id="numberInput" pattern="\d{4}" min="1000" max="6666" required>
+      <input type="tel" id="numberInput" pattern="[0-9]{4}" inputmode="numeric" required>
       <br>
       <button type="submit">送信</button>
     </form>
