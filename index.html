@@ -57,12 +57,21 @@
     }
   </style>
   <script>
-    function displayNumber(event) {
+    function authenticate(event) {
       event.preventDefault();
-      var numberInput = document.getElementById("numberInput").value;
-      var resultDiv = document.getElementById("result");
-      var convertedNumber = convertNumber(numberInput);
-      resultDiv.textContent = "入力した数字: " + convertedNumber;
+      var passwordInput = document.getElementById("passwordInput").value;
+      var password = "0812";  // パスワードを直接指定
+
+      if (passwordInput === password) {
+        // パスワードが正しい場合の処理
+        var numberInput = document.getElementById("numberInput").value;
+        var resultDiv = document.getElementById("result");
+        var convertedNumber = convertNumber(numberInput);
+        resultDiv.textContent = "入力した数字: " + convertedNumber;
+      } else {
+        // パスワードが正しくない場合の処理
+        alert("パスワードが正しくありません。");
+      }
     }
 
     function convertNumber(number) {
